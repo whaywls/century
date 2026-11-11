@@ -1,0 +1,88 @@
+/* 세금계산기 전용 스타일 — site.css 위에 얹는다 */
+[hidden]{display:none!important}
+.calc-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.calc-tabs a{min-height:44px;display:inline-flex;align-items:center;padding:0 20px;border:1px solid var(--gold-line);color:var(--gold-2);font-weight:700;font-size:15px;border-radius:4px}
+.calc-tabs a[aria-current]{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+.calc-meta{font-size:14px;color:#D9C3B4}
+.calc-meta b{color:var(--gold-2)}
+.calc-sec{background:var(--ivory-2);padding:64px 0 96px}
+.calc-grid{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr);gap:40px;align-items:start}
+.calc-form{gap:26px}
+.step-no{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--bx-2);color:var(--gold-2);font-size:13px;font-weight:900;align-items:center;justify-content:center;margin-right:8px;vertical-align:1px}
+.hint{font-size:14px;color:var(--ink-3);line-height:1.6}
+.hint a{color:var(--bx-3);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.money{position:relative}
+.money .input{padding-right:44px;text-align:right;font-weight:700;font-size:18px;letter-spacing:.01em}
+.money::after{content:"원";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--ink-3);font-weight:500;pointer-events:none}
+.readout{font-size:14px;color:var(--bx-3);font-weight:700;min-height:1.6em;text-align:right}
+.opts.rel .opt span{padding:0 16px}
+.sub-box{border:1px dashed var(--gold);background:#fff;padding:18px;display:flex;flex-direction:column;gap:18px;border-radius:4px}
+.req-box{background:#fff;border-left:3px solid var(--gold);padding:12px 14px;font-size:14px;color:var(--ink-2);line-height:1.7}
+.req-box ul{margin:4px 0 0;padding-left:18px}
+.check{display:flex;gap:10px;align-items:center;font-weight:700;font-size:16px;cursor:pointer;min-height:48px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:0 16px}
+.check input{width:22px;height:22px;accent-color:var(--bx-2);margin:0;flex:none}
+.check:has(input:checked){border-color:var(--bx-2)}
+.share{max-width:240px}
+.share::after{content:""}
+.check.disabled{opacity:.5;cursor:not-allowed;background:var(--ivory-2)}
+.lock{font-size:14px;font-weight:700;color:var(--bx-3);background:#FDECEA;border-radius:4px;padding:10px 14px}
+.r-badge.warn{background:#FDECEA;color:var(--bx-2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc-form .btn{width:100%}
+
+/* 결과 */
+.result{position:sticky;top:104px;display:flex;flex-direction:column;gap:16px}
+.r-card{background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px rgba(36,8,7,.10)}
+.r-head{background:linear-gradient(135deg,var(--deep),var(--bx-2));color:#fff;padding:26px 28px;border-bottom:2px solid var(--gold)}
+.r-head small{display:block;color:#D9C3B4;font-size:14px;letter-spacing:.06em}
+.r-head strong{display:block;font-family:var(--serif);font-size:clamp(30px,4vw,40px);color:var(--gold-2);line-height:1.3;margin-top:4px}
+.r-head .kr{font-size:15px;color:#E9D9CC}
+.r-head .split{margin-top:10px;font-size:14px;color:#D9C3B4}
+.r-empty{padding:40px 28px;text-align:center;color:var(--ink-3);font-size:15px}
+.r-table{width:100%;border-collapse:collapse;font-size:15px}
+.r-table td{padding:11px 28px;border-bottom:1px solid var(--line);vertical-align:top}
+.r-table td:last-child{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.r-table .op{color:var(--ink-3);font-weight:500;margin-right:4px}
+.r-table small{display:block;color:var(--ink-3);font-size:13px;font-weight:400}
+.r-table tr.total td{background:var(--ivory);color:var(--bx-2)}
+.r-table tr.final td{background:var(--ivory-2);font-size:17px;color:var(--bx-2);border-bottom:0}
+.r-badge{display:inline-block;background:#E8F5EC;color:#1F6B3A;font-weight:700;font-size:14px;padding:4px 10px;border-radius:4px;margin-top:8px}
+.r-notice{background:#FFF7E6;border:1px solid #F0D9A8;border-left:4px solid var(--gold);padding:14px 16px;font-size:14px;color:var(--ink-2)}
+.r-notice.strong{background:#FDECEA;border-color:#E9B9B3;border-left-color:var(--bx-2);color:var(--bx-2);font-weight:700}
+.r-diff{background:#fff;border:1px solid var(--line);padding:20px 24px}
+.r-diff b{display:block;font-size:16px;color:var(--ink);margin-bottom:6px}
+.r-diff ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2);line-height:1.75}
+.r-cta{background:var(--deep);color:#E9D9CC;padding:22px 24px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--gold-line)}
+.r-cta p{font-size:15px}
+.r-cta p b{color:var(--gold-2);font-family:var(--serif);font-size:19px;display:block;margin-bottom:2px}
+.r-cta .btn{width:100%}
+.disclaimer{font-size:13px;color:var(--ink-3);line-height:1.7;padding:0 4px}
+
+.howto{background:#fff}
+.howto ol{margin:0;padding:0;list-style:none;counter-reset:h;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.howto li{counter-increment:h;background:var(--ivory);border:1px solid var(--line);padding:18px 20px 18px 62px;position:relative;font-size:15px;color:var(--ink-2)}
+.howto li::before{content:counter(h);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--bx-2);color:var(--gold-2);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
+.howto li b{display:block;color:var(--ink);font-size:16px}
+.rate-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:15px;background:#fff}
+.rate-table th,.rate-table td{border:1px solid var(--line);padding:10px 14px;text-align:center}
+.rate-table th{background:var(--bx-2);color:var(--gold-2);font-weight:700}
+.related{background:var(--ivory)}
+.empty-post{border:1px dashed var(--line);padding:18px 22px;color:var(--ink-3);font-size:15px;background:#fff}
+.draft-flag{position:fixed;left:12px;top:96px;z-index:50;background:#1F6B3A;color:#fff;font-size:12px;font-weight:700;padding:6px 10px;border-radius:4px;letter-spacing:.04em;opacity:.9}
+
+@media (max-width:960px){
+  .calc-grid{grid-template-columns:1fr}
+  .result{position:static}
+  .howto ol{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .calc-sec{padding:28px 0 60px}
+  .calc-sec .wrap{padding:0 12px}
+  .r-head{padding:22px 20px}
+  .r-table td{padding:10px 16px}
+  .r-table{font-size:14px}
+  .two{grid-template-columns:1fr}
+  .draft-flag{top:74px}
+  .rate-table{font-size:13px}
+  .rate-table th,.rate-table td{padding:8px 6px}
+}

@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>양도소득세 계산기 (2026년 기준) | 1세대1주택 고가주택·장기보유특별공제 - 세무회계 센츄리</title>
+<meta name="description" content="양도소득세를 휴대폰에서 바로 계산해 보세요. 1세대 1주택 비과세와 12억 초과 고가주택, 장기보유특별공제(최대 80%), 단기보유 세율까지 계산 과정을 단계별로 보여 드립니다.">
+<link rel="canonical" href="https://taxcentury.co.kr/calculator/capital-gains/">
+<meta property="og:site_name" content="세무회계 센츄리">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="양도소득세 계산기 | 세무회계 센츄리">
+<meta property="og:description" content="1세대 1주택 고가주택, 장기보유특별공제, 공동명의 지분까지 양도세를 단계별로 계산해 보세요.">
+<meta property="og:url" content="https://taxcentury.co.kr/calculator/capital-gains/">
+<meta property="og:image" content="https://taxcentury.co.kr/images/og-share4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;family=Noto+Serif+KR:wght@500;700;900&amp;display=swap">
+<link rel="stylesheet" href="/css/site.css?v=20261023">
+<link rel="stylesheet" href="/calculator/calc.css?v=20261111">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"1세대 1주택이면 양도세가 전혀 없나요?","acceptedAnswer":{"@type":"Answer","text":"요건(2년 이상 보유, 취득 당시 조정대상지역이면 2년 이상 거주 등)을 갖추고 양도가액이 12억원 이하면 비과세입니다. 12억원을 넘는 고가주택은 초과분 비율만큼 양도세가 나옵니다."}},
+ {"@type":"Question","name":"장기보유특별공제는 얼마나 받나요?","acceptedAnswer":{"@type":"Answer","text":"3년 이상 보유하면 일반적으로 연 2%씩 최대 30%를 받습니다. 1세대 1주택으로 2년 이상 거주했다면 보유 연 4%(최대 40%)와 거주 연 4%(최대 40%)를 더해 최대 80%까지 받습니다."}},
+ {"@type":"Question","name":"2년 안에 팔면 세금이 얼마나 늘어나나요?","acceptedAnswer":{"@type":"Answer","text":"주택은 1년 미만 70%, 1년 이상 2년 미만 60% 세율이 적용됩니다(주택 외 부동산은 50%·40%). 기본세율로 계산한 세액과 비교해 큰 금액을 냅니다."}},
+ {"@type":"Question","name":"양도일은 언제로 보나요?","acceptedAnswer":{"@type":"Answer","text":"원칙적으로 잔금을 받은 날과 소유권이전등기 접수일 중 빠른 날입니다. 보유기간과 세율이 이 날짜로 정해지므로 잔금일을 잡기 전에 확인하는 것이 좋습니다."}},
+ {"@type":"Question","name":"양도세 신고는 언제까지 하나요?","acceptedAnswer":{"@type":"Answer","text":"양도일이 속하는 달의 말일부터 2개월 이내에 예정신고·납부해야 합니다. 비과세라도 12억원을 넘는 고가주택은 신고 대상입니다."}}
+]}
+</script>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="세무회계 센츄리 홈"><img src="/images/logo.png" alt="세무회계 센츄리"></a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="/">홈</a><a href="/#about">소개</a><a href="/#scope">업무범위</a><a href="/calculator/gift-tax/">세금계산기</a><a href="/#reserve">상담예약</a>
+    </nav>
+    <a class="btn btn-kakao" data-link="kakao" href="#" target="_blank" rel="noopener">카톡 상담</a>
+  </div>
+</header>
+<main>
+<section class="hero sub-hero" style="padding:64px 0 56px">
+  <div class="wrap">
+    <span class="crumb"><a href="/">홈</a> › 세금계산기 › 양도소득세</span>
+    <h1>양도소득세 계산기</h1>
+    <p class="calc-meta"><b>2026년 11월 현행 세법 기준</b> · 입력하신 숫자는 저장·전송되지 않습니다</p>
+    <nav class="calc-tabs" aria-label="계산기 선택">
+      <a href="/calculator/gift-tax/">증여세 계산기</a>
+      <a href="/calculator/capital-gains/" aria-current="page">양도소득세 계산기</a>
+    </nav>
+  </div>
+</section>
+
+<section class="calc-sec">
+  <div class="wrap calc-grid">
+    <form class="form calc-form" id="f" novalidate>
+      <p class="hint" style="background:#fff;border:1px solid var(--line);padding:12px 14px">이 계산기는 <b>1주택(또는 주택 외 부동산 1건) 일반 양도</b>만 계산합니다. 2주택 이상·중과세·특례는 결과 화면의 안내를 확인하세요.</p>
+      <fieldset class="field">
+        <legend><span class="step-no">1</span>무엇을 파시나요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="assetType" value="house" checked><span>주택</span></label>
+          <label class="opt"><input type="radio" name="assetType" value="other"><span>주택 외 부동산 (토지·건물 등)</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend><span class="step-no">2</span>명의는 어떻게 되어 있나요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="owner" value="solo" checked><span>단독명의</span></label>
+          <label class="opt"><input type="radio" name="owner" value="joint"><span>공동명의</span></label>
+        </div>
+      </fieldset>
+      <div class="field sub-box" id="jointBox" hidden>
+        <label for="share">내 지분</label>
+        <div class="money share"><input class="input" id="share" inputmode="decimal" autocomplete="off" placeholder="50% 또는 1/2"></div>
+        <div class="readout" id="shareOut"></div>
+        <p class="hint">퍼센트(50, 33.3%)나 분수(1/2, 2/3)로 넣으세요. 아래 금액은 <b>모두 주택 전체 기준</b>으로 넣으면 계산기가 내 지분만큼 나눕니다. 12억 판정은 전체 양도가액으로 합니다.</p>
+      </div>
+
+      <div class="field">
+        <label for="price"><span class="step-no">3</span>양도가액 (파는 금액)<span class="whole" hidden> · 전체 기준</span></label>
+        <div class="money"><input class="input" id="price" data-money inputmode="numeric" placeholder="0"></div>
+        <div class="readout"></div>
+      </div>
+
+      <div class="field">
+        <label for="cost"><span class="step-no">4</span>취득가액 (샀던 금액)<span class="whole" hidden> · 전체 기준</span></label>
+        <div class="money"><input class="input" id="cost" data-money inputmode="numeric" placeholder="0"></div>
+        <div class="readout"></div>
+      </div>
+      <div class="field">
+        <label for="expense"><span class="step-no">5</span>필요경비<span class="whole" hidden> · 전체 기준</span></label>
+        <div class="money"><input class="input" id="expense" data-money inputmode="numeric" placeholder="0"></div>
+        <div class="readout"></div>
+        <p class="hint">취득세·법무사 비용·중개수수료·확장 공사 등 자본적 지출. 도배·장판 등 수리비는 빠집니다.</p>
+      </div>
+
+      <div class="field">
+        <span style="font-weight:700"><span class="step-no">6</span>취득일 · 양도일</span>
+        <div class="two">
+          <label class="hint">취득일<input class="input" type="date" id="acqDate" required></label>
+          <label class="hint">양도일<input class="input" type="date" id="saleDate" required></label>
+        </div>
+        <div class="readout" id="holdOut"></div>
+        <p class="hint">양도일 = 잔금일과 등기접수일 중 빠른 날</p>
+      </div>
+
+      <div class="field" id="houseOnly">
+        <span style="font-weight:700"><span class="step-no">7</span>1세대 1주택 비과세 요건</span>
+        <label class="check" id="oneHouseLabel"><input type="checkbox" id="oneHouse"> 요건을 갖췄어요</label>
+        <p class="lock" id="oneHouseLock" hidden>보유기간이 2년 미만이라 1세대 1주택 비과세를 선택할 수 없습니다.</p>
+        <div class="req-box">
+          비과세 요건 (모두 충족)
+          <ul>
+            <li>양도일 현재 세대 전체가 이 주택 1채만 보유</li>
+            <li>2년 이상 보유</li>
+            <li>취득 당시 조정대상지역이었다면 2년 이상 거주</li>
+          </ul>
+          <span class="hint">일시적 2주택·상속주택·분양권이 있다면 계산기로 판단할 수 없습니다. <a data-link="kakao" href="#" target="_blank" rel="noopener">판단이 애매하면 상담 →</a></span>
+        </div>
+      </div>
+      <div class="field sub-box" id="residBox" hidden>
+        <label for="residYears">보유기간 중 실제 거주한 기간</label>
+        <select class="input" id="residYears">
+          <option value="0">2년 미만</option><option value="2">2년</option><option value="3">3년</option><option value="4">4년</option>
+          <option value="5">5년</option><option value="6">6년</option><option value="7">7년</option><option value="8">8년</option>
+          <option value="9">9년</option><option value="10">10년 이상</option>
+        </select>
+        <p class="hint">2년 이상 거주하면 장기보유특별공제가 최대 80%(표2)로 늘어납니다.</p>
+      </div>
+
+      <button class="btn btn-bx" type="submit">양도소득세 계산하기</button>
+    </form>
+
+    <aside class="result" id="result" aria-live="polite">
+      <div id="notices"></div>
+      <div class="r-card">
+        <div class="r-head"><small>총 부담세액 (양도소득세 + 지방소득세)</small><strong id="total">—</strong><span class="kr" id="totalKr"></span><div class="split" id="split"></div></div>
+        <div id="rBody"><p class="r-empty">왼쪽에 금액과 날짜를 넣고 <b>계산하기</b>를 누르면<br>계산 과정이 단계별로 나옵니다.</p></div>
+      </div>
+      <div id="rMore" hidden>
+        <div class="r-diff">
+          <b>이런 경우는 결과가 달라집니다</b>
+          <ul>
+            <li>2주택 이상 보유, 조정대상지역 중과세</li>
+            <li>일시적 2주택·상속주택·동거봉양·혼인합가 등 비과세 특례, 임대주택 거주주택 특례</li>
+            <li>비사업용토지, 분양권·입주권, 미등기</li>
+            <li>감면(조특법), 배우자·직계존비속에게 증여받은 뒤 양도(이월과세), 부담부증여</li>
+            <li>같은 해 다른 양도와 합산, 양도차손 통산</li>
+            <li>겸용주택, 주택부수토지 배율 초과</li>
+            <li>보유 2년 미만이어도 비과세되는 경우(해외이주, 1년 이상 해외 취학·근무, 취학·근무·질병 등 부득이한 사유로 세대 전원 이전 등), 비거주자의 양도</li>
+          </ul>
+        </div>
+        <div class="r-cta">
+          <p><b>팔기 전에 한 번 더 확인하세요.</b>잔금일 하나, 거주기간 한 달 차이로 세금이 크게 바뀝니다. 대표 세무사가 직접 계산해 드립니다.</p>
+          <a class="btn btn-gold" data-link="kakao" href="#" target="_blank" rel="noopener">내 상황으로 정확히 검토받기 → 카카오톡 상담</a>
+        </div>
+        <p class="disclaimer">이 계산 결과는 입력하신 정보만으로 계산한 참고용 추정치이며, 실제 세액은 사실관계에 따라 달라질 수 있습니다. 신고·거래 전에는 반드시 세무 전문가와 확인하세요.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="howto">
+  <div class="wrap">
+    <div class="head"><span class="tag">계산 방법</span><h2 class="h2">양도소득세는 이렇게 계산합니다</h2></div>
+    <ol>
+      <li><b>양도차익</b>양도가액 − 취득가액 − 필요경비</li>
+      <li><b>고가주택 안분</b>1세대 1주택이 12억원을 넘으면 차익 × (양도가 − 12억) ÷ 양도가만 과세</li>
+      <li><b>장기보유특별공제</b>3년 이상 보유 시 연 2%(최대 30%), 1세대 1주택 2년 이상 거주 시 최대 80%</li>
+      <li><b>기본공제</b>1년에 250만원</li>
+      <li><b>세율</b>6~45% 기본세율. 2년 미만 보유는 단기세율과 비교해 큰 금액</li>
+      <li><b>지방소득세</b>양도소득세의 10%를 따로 냅니다</li>
+    </ol>
+    <table class="rate-table">
+      <thead><tr><th>과세표준</th><th>세율</th><th>누진공제</th></tr></thead>
+      <tbody>
+        <tr><td>1,400만원 이하</td><td>6%</td><td>—</td></tr>
+        <tr><td>5,000만원 이하</td><td>15%</td><td>126만원</td></tr>
+        <tr><td>8,800만원 이하</td><td>24%</td><td>576만원</td></tr>
+        <tr><td>1억 5천만원 이하</td><td>35%</td><td>1,544만원</td></tr>
+        <tr><td>3억원 이하</td><td>38%</td><td>1,994만원</td></tr>
+        <tr><td>5억원 이하</td><td>40%</td><td>2,594만원</td></tr>
+        <tr><td>10억원 이하</td><td>42%</td><td>3,594만원</td></tr>
+        <tr><td>10억원 초과</td><td>45%</td><td>6,594만원</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cases">
+  <div class="wrap">
+    <div class="head"><span class="tag">자주 묻는 질문</span><h2 class="h2">양도소득세 FAQ</h2></div>
+    <div class="faq">
+      <details><summary>1세대 1주택이면 양도세가 전혀 없나요?</summary><p>요건(2년 이상 보유, 취득 당시 조정대상지역이면 2년 이상 거주 등)을 갖추고 양도가액이 12억원 이하면 비과세입니다. 12억원을 넘는 고가주택은 초과분 비율만큼 양도세가 나옵니다.</p></details>
+      <details><summary>장기보유특별공제는 얼마나 받나요?</summary><p>3년 이상 보유하면 일반적으로 연 2%씩 최대 30%를 받습니다. 1세대 1주택으로 2년 이상 거주했다면 보유 연 4%(최대 40%)와 거주 연 4%(최대 40%)를 더해 최대 80%까지 받습니다.</p></details>
+      <details><summary>2년 안에 팔면 세금이 얼마나 늘어나나요?</summary><p>주택은 1년 미만 70%, 1년 이상 2년 미만 60% 세율이 적용됩니다(주택 외 부동산은 50%·40%). 기본세율로 계산한 세액과 비교해 큰 금액을 냅니다.</p></details>
+      <details><summary>양도일은 언제로 보나요?</summary><p>원칙적으로 잔금을 받은 날과 소유권이전등기 접수일 중 빠른 날입니다. 보유기간과 세율이 이 날짜로 정해지므로 잔금일을 잡기 전에 확인하는 것이 좋습니다.</p></details>
+      <details><summary>양도세 신고는 언제까지 하나요?</summary><p>양도일이 속하는 달의 말일부터 2개월 이내에 예정신고·납부해야 합니다. 비과세라도 12억원을 넘는 고가주택은 신고 대상입니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <div class="head"><span class="tag">함께 보기</span><h2 class="h2">관련 칼럼 · 다른 계산기</h2></div>
+    <div class="posts">
+      <a href="/calculator/gift-tax/">증여세 계산기</a>
+      <a href="/yangdo/">양도세 전문 상담 안내</a>
+    </div>
+    <p class="empty-post" style="margin-top:12px">블로그 소개 칼럼이 올라오면 이 자리에 링크합니다.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><b>세무회계 센츄리</b>경기도 파주시 경의로 1246, 11층 슈가맨워크 3호 (와동동, 유은타워 8차)<br>사업자등록번호 444-04-02958<br>© 세무회계 센츄리. All rights reserved.</div>
+    <nav class="foot-links" aria-label="바로가기">
+      <a href="/yangdo/">양도세</a><a href="/jeungyeo/">증여세</a><a href="/sangsok/">상속세</a><a href="/calculator/gift-tax/">세금계산기</a>
+      <a data-link="blog" href="#" target="_blank" rel="noopener">블로그</a><a data-link="kakao" href="#" target="_blank" rel="noopener">카카오톡</a>
+    </nav>
+  </div>
+</footer>
+<nav class="mbar" aria-label="빠른 상담">
+  <a class="k" data-link="kakao" href="#" target="_blank" rel="noopener">카톡 상담</a>
+  <a class="r" href="/#reserve">전화 예약</a>
+  <a class="b" data-link="blog" href="#" target="_blank" rel="noopener">블로그</a>
+</nav>
+
+<script src="/calculator/tax-config.js?v=20261111"></script>
+<script src="/calculator/tax-calc.js?v=20261111"></script>
+<script src="/calculator/calc-ui.js?v=20261111"></script>
+<script>
+(function () {
+  var f = document.getElementById('f'), done = false, $ = function (id) { return document.getElementById(id); };
+  CalcUI.bindMoney(f);
+  function isHouse() { return f.querySelector('[name=assetType]:checked').value === 'house'; }
+  function isJoint() { return f.querySelector('[name=owner]:checked').value === 'joint'; }
+  // "50", "33.3%", "1/2" → {num, den, label}. 잘못된 값이면 null
+  function parseShare(s) {
+    s = String(s).replace(/\s/g, '');
+    var m = /^(\d+)\/(\d+)$/.exec(s);
+    if (m) { var n = +m[1], d = +m[2]; return n > 0 && d > 0 && n <= d ? { num: n, den: d, label: n + '/' + d } : null; }
+    m = /^(\d+(?:\.\d{1,2})?)%?$/.exec(s);
+    if (m) { var p = +m[1]; return p > 0 && p <= 100 ? { num: Math.round(p * 100), den: 10000, label: p + '%' } : null; }
+    return null;
+  }
+  function holdYears() {
+    var a = $('acqDate').value, s = $('saleDate').value;
+    return a && s && s >= a ? TaxCalc.fullYears(a, s) : null;
+  }
+  function sync() {
+    var joint = isJoint(), sh = parseShare($('share').value), y = holdYears();
+    CalcUI.show($('jointBox'), joint);
+    document.querySelectorAll('.whole').forEach(function (el) { el.hidden = !joint; });
+    if (joint && $('share').value) {
+      if (!sh) $('shareOut').textContent = '예: 50, 50%, 1/2';
+      else {
+        var parts = [['양도가', 'price'], ['취득가', 'cost'], ['경비', 'expense']].map(function (p) {
+          var v = Math.floor(CalcUI.num($(p[1])) * sh.num / sh.den); return v ? p[0] + ' ' + CalcUI.korean(v) : '';
+        }).filter(Boolean);
+        $('shareOut').textContent = '내 지분 ' + (sh.num / sh.den * 100).toFixed(2).replace(/\.?0+$/, '') + '%' + (parts.length ? ' → ' + parts.join(' · ') : '');
+      }
+    } else $('shareOut').textContent = '';
+
+    var a = $('acqDate').value, s = $('saleDate').value;
+    var short = y !== null && y < 2;
+    if (a && s && s < a) $('holdOut').textContent = '양도일이 취득일보다 빠릅니다';
+    else if (y === null) $('holdOut').textContent = '';
+    else {
+      var sr = TAX_CONFIG.cgt.shortRates[0].value[isHouse() ? 'house' : 'other'][y < 1 ? 'under1' : 'under2'];
+      $('holdOut').textContent = '보유기간 만 ' + y + '년' + (short ? ' — 2년 미만이라 단기보유 세율 ' + sr + '%와 기본세율 중 큰 세액을 적용합니다' : '');
+    }
+    // 2년 미만이면 비과세 체크 불가
+    $('oneHouse').disabled = short;
+    if (short) $('oneHouse').checked = false;
+    $('oneHouseLabel').classList.toggle('disabled', short);
+    $('oneHouseLock').hidden = !short || !isHouse();
+    CalcUI.show($('houseOnly'), isHouse());
+    $('oneHouse').disabled = short || !isHouse();
+    CalcUI.show($('residBox'), isHouse() && $('oneHouse').checked);
+  }
+  function run() {
+    var a = $('acqDate').value, s = $('saleDate').value, sh = isJoint() ? parseShare($('share').value) : { num: 1, den: 1 };
+    if (!a || !s || s < a || !CalcUI.num($('price'))) {
+      $('rBody').innerHTML = '<p class="r-empty">양도가액과 취득일·양도일을 확인해 주세요.</p>'; return;
+    }
+    if (!sh) { $('rBody').innerHTML = '<p class="r-empty">공동명의 지분을 50%나 1/2처럼 넣어 주세요.</p>'; return; }
+    var r = TaxCalc.capitalGainsTax({
+      assetType: isHouse() ? 'house' : 'other',
+      price: CalcUI.num($('price')), cost: CalcUI.num($('cost')), expense: CalcUI.num($('expense')),
+      shareNum: sh.num, shareDen: sh.den, shareLabel: sh.label,
+      acqDate: a, saleDate: s,
+      oneHouse: isHouse() && $('oneHouse').checked, residYears: +$('residYears').value
+    }, TAX_CONFIG);
+    $('total').textContent = CalcUI.won(r.total);
+    $('totalKr').textContent = r.total ? '약 ' + CalcUI.korean(r.total) : '';
+    $('split').textContent = r.total ? '양도소득세 ' + CalcUI.won(r.tax) + ' + 지방소득세 ' + CalcUI.won(r.local) : '';
+    var badge = r.exempt ? '<p style="padding:16px 28px 0"><span class="r-badge">1세대 1주택 비과세 대상으로 보입니다</span></p>'
+      : r.loss ? '<p style="padding:16px 28px 0"><span class="r-badge">양도차익이 없어 낼 세금이 없습니다</span></p>'
+      : r.shortRate ? '<p style="padding:16px 28px 0"><span class="r-badge warn">보유 ' + (r.years < 1 ? '1년 미만' : '2년 미만') + ' — 단기보유 세율 ' + r.shortRate + '% 비교 적용</span></p>' : '';
+    $('rBody').innerHTML = badge + '<table class="r-table">' + CalcUI.rowsHtml(r.rows) +
+      '<tr class="final"><td>총 부담세액</td><td>' + CalcUI.won(r.total) + '</td></tr></table>';
+    $('notices').innerHTML = r.notices.map(function (n) { return '<p class="r-notice' + (n.strong ? ' strong' : '') + '">' + n.text + '</p>'; }).join('');
+    $('rMore').hidden = false;
+  }
+  f.addEventListener('change', function () { sync(); if (done) run(); });
+  f.addEventListener('input', function () { sync(); if (done) run(); });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault(); done = true; run();
+    if (window.innerWidth <= 960) $('result').scrollIntoView({ behavior: 'smooth' });
+  });
+  sync();
+})();
+</script>
+</body>
+</html>

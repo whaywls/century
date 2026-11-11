@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>증여세 계산기 (2026년 기준) | 자녀·배우자 증여공제·혼인공제 - 세무회계 센츄리</title>
+<meta name="description" content="증여세를 휴대폰에서 바로 계산해 보세요. 배우자 6억·자녀 5천만원 증여재산공제, 혼인·출산공제 1억, 10년 합산, 세대생략 할증, 신고세액공제 3%까지 계산 과정을 단계별로 보여 드립니다.">
+<link rel="canonical" href="https://taxcentury.co.kr/calculator/gift-tax/">
+<meta property="og:site_name" content="세무회계 센츄리">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="증여세 계산기 | 세무회계 센츄리">
+<meta property="og:description" content="자녀·배우자 증여공제, 혼인·출산공제, 10년 합산까지 증여세를 단계별로 계산해 보세요.">
+<meta property="og:url" content="https://taxcentury.co.kr/calculator/gift-tax/">
+<meta property="og:image" content="https://taxcentury.co.kr/images/og-share4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;family=Noto+Serif+KR:wght@500;700;900&amp;display=swap">
+<link rel="stylesheet" href="/css/site.css?v=20261023">
+<link rel="stylesheet" href="/calculator/calc.css?v=20261111">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"자녀에게 세금 없이 증여할 수 있는 금액은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"성인 자녀는 10년 동안 5천만원(미성년 자녀는 2천만원)까지 증여재산공제를 받아 증여세가 없습니다. 이 한도는 아버지·어머니 등 직계존속 전체를 합쳐 적용됩니다."}},
+ {"@type":"Question","name":"혼인·출산 증여재산공제는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"혼인신고일 전후 2년 이내 또는 자녀 출생일·입양일부터 2년 이내에 부모 등 직계존속에게 받은 증여는 기본 공제와 별도로 1억원까지 추가로 공제됩니다. 혼인과 출산을 합쳐 평생 1억원이 한도입니다."}},
+ {"@type":"Question","name":"10년 안에 같은 사람에게 여러 번 받으면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"10년 이내 동일인(증여자가 부모라면 그 배우자 포함)에게 받은 증여는 합산해서 세율을 적용하고, 전에 낸 증여세는 기납부세액으로 빼 줍니다."}},
+ {"@type":"Question","name":"할아버지가 손자에게 바로 증여하면 세금이 더 나오나요?","acceptedAnswer":{"@type":"Answer","text":"세대를 건너뛴 증여는 산출세액의 30%(미성년자가 20억원 넘게 받으면 40%)가 할증됩니다. 다만 자녀가 이미 사망해 손자녀가 받는 경우에는 할증하지 않습니다."}},
+ {"@type":"Question","name":"증여세 신고기한은 언제인가요?","acceptedAnswer":{"@type":"Answer","text":"증여받은 날이 속하는 달의 말일부터 3개월 이내에 신고해야 합니다. 기한 안에 신고하면 세액의 3%를 신고세액공제로 빼 줍니다."}}
+]}
+</script>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="세무회계 센츄리 홈"><img src="/images/logo.png" alt="세무회계 센츄리"></a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="/">홈</a><a href="/#about">소개</a><a href="/#scope">업무범위</a><a href="/calculator/gift-tax/">세금계산기</a><a href="/#reserve">상담예약</a>
+    </nav>
+    <a class="btn btn-kakao" data-link="kakao" href="#" target="_blank" rel="noopener">카톡 상담</a>
+  </div>
+</header>
+<main>
+<section class="hero sub-hero" style="padding:64px 0 56px">
+  <div class="wrap">
+    <span class="crumb"><a href="/">홈</a> › 세금계산기 › 증여세</span>
+    <h1>증여세 계산기</h1>
+    <p class="calc-meta"><b>2026년 11월 현행 세법 기준</b> · 입력하신 숫자는 저장·전송되지 않습니다</p>
+    <nav class="calc-tabs" aria-label="계산기 선택">
+      <a href="/calculator/gift-tax/" aria-current="page">증여세 계산기</a>
+      <a href="/calculator/capital-gains/">양도소득세 계산기</a>
+    </nav>
+  </div>
+</section>
+
+<section class="calc-sec">
+  <div class="wrap calc-grid">
+    <form class="form calc-form" id="f" novalidate>
+      <fieldset class="field">
+        <legend><span class="step-no">1</span>누구에게 받나요?</legend>
+        <div class="opts rel">
+          <label class="opt"><input type="radio" name="relation" value="ascendant" checked><span>부모·조부모</span></label>
+          <label class="opt"><input type="radio" name="relation" value="spouse"><span>배우자</span></label>
+          <label class="opt"><input type="radio" name="relation" value="descendant"><span>자녀·손자녀</span></label>
+          <label class="opt"><input type="radio" name="relation" value="relative"><span>기타 친족</span></label>
+          <label class="opt"><input type="radio" name="relation" value="other"><span>그 외</span></label>
+        </div>
+        <p class="hint" id="relHint">기타 친족: 4촌 이내 혈족·3촌 이내 인척</p>
+      </fieldset>
+
+      <fieldset class="field" data-asc>
+        <legend><span class="step-no">2</span>받는 분이 미성년자인가요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="minor" value="0" checked><span>아니오 (성인)</span></label>
+          <label class="opt"><input type="radio" name="minor" value="1"><span>예 (만 19세 미만)</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="amount"><span class="step-no">3</span>이번에 받는 재산 가액</label>
+        <div class="money"><input class="input" id="amount" data-money inputmode="numeric" autocomplete="off" placeholder="0"></div>
+        <div class="readout"></div>
+        <p class="hint">시가(평가액) 기준입니다. 아파트·토지·비상장주식 평가는 계산기에서 하지 않습니다.</p>
+      </div>
+
+      <fieldset class="field">
+        <legend><span class="step-no">4</span>최근 10년 안에 같은 분에게 받은 증여가 있나요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="hasPrior" value="0" checked><span>없음</span></label>
+          <label class="opt"><input type="radio" name="hasPrior" value="1"><span>있음</span></label>
+        </div>
+      </fieldset>
+      <div class="sub-box" id="priorBox" hidden>
+        <div class="field">
+          <label for="priorAmount">10년 내 받은 증여재산가액 <span id="priorScope">(부모라면 그 배우자에게 받은 것 포함)</span></label>
+          <div class="money"><input class="input" id="priorAmount" data-money inputmode="numeric" placeholder="0"></div>
+          <div class="readout"></div>
+        </div>
+        <div class="field">
+          <label for="priorTax">그때 낸 증여세 산출세액</label>
+          <div class="money"><input class="input" id="priorTax" data-money inputmode="numeric" placeholder="0"></div>
+          <div class="readout"></div>
+          <p class="hint">모르시면 0으로 두고 <a data-link="kakao" href="#" target="_blank" rel="noopener">상담</a>으로 확인하세요.</p>
+        </div>
+        <div class="field">
+          <label for="priorDeduction">10년 내 이미 받은 증여재산공제액</label>
+          <div class="money"><input class="input" id="priorDeduction" data-money inputmode="numeric" placeholder="0"></div>
+          <div class="readout"></div>
+          <p class="hint">예) 아버지에게 받으며 쓴 5천만원 공제는 어머니에게 받을 때도 빠집니다.</p>
+        </div>
+      </div>
+
+      <fieldset class="field" data-asc>
+        <legend><span class="step-no">5</span>혼인·출산 공제를 받나요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="marriage" value="0" checked><span>아니오</span></label>
+          <label class="opt"><input type="radio" name="marriage" value="1"><span>예</span></label>
+        </div>
+        <p class="hint">혼인신고일 전후 2년 또는 자녀 출생·입양일부터 2년 안의 증여일 때, 평생 1억원까지.</p>
+      </fieldset>
+      <div class="field sub-box" id="marriageBox" hidden>
+        <label for="marriageUsed">이미 사용한 혼인·출산 공제액</label>
+        <div class="money"><input class="input" id="marriageUsed" data-money inputmode="numeric" placeholder="0"></div>
+        <div class="readout"></div>
+      </div>
+
+      <fieldset class="field" data-asc>
+        <legend><span class="step-no">6</span>조부모가 손자녀에게 주는 등 세대를 건너뛴 증여인가요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="skipGen" value="0" checked><span>아니오</span></label>
+          <label class="opt"><input type="radio" name="skipGen" value="1"><span>예</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend><span class="step-no">7</span>신고기한 안에 신고하나요?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="onTime" value="1" checked><span>예</span></label>
+          <label class="opt"><input type="radio" name="onTime" value="0"><span>아니오</span></label>
+        </div>
+        <p class="hint">증여일이 속한 달의 말일부터 3개월 이내</p>
+      </fieldset>
+
+      <button class="btn btn-bx" type="submit">증여세 계산하기</button>
+    </form>
+
+    <aside class="result" id="result" aria-live="polite">
+      <div class="r-card">
+        <div class="r-head"><small>납부할 증여세</small><strong id="total">—</strong><span class="kr" id="totalKr"></span></div>
+        <div id="rBody"><p class="r-empty">왼쪽에 금액을 넣고 <b>계산하기</b>를 누르면<br>계산 과정이 단계별로 나옵니다.</p></div>
+      </div>
+      <div id="rMore" hidden>
+        <div class="r-diff">
+          <b>이런 경우는 결과가 달라집니다</b>
+          <ul>
+            <li>부담부증여(대출·전세보증금을 함께 넘기는 경우) — 증여자에게 양도세도 나옵니다</li>
+            <li>아파트·토지·비상장주식 등 재산 평가(시가·유사매매사례가액·기준시가)</li>
+            <li>세대생략 증여와 10년 합산이 섞인 경우의 할증·기납부세액 한도 정밀 계산</li>
+            <li>자녀가 사망해 손자녀가 받는 경우(할증 제외)</li>
+            <li>비거주자, 창업자금·가업승계 특례, 증여 추정·의제</li>
+          </ul>
+        </div>
+        <div class="r-cta">
+          <p><b>이 숫자, 그대로 믿어도 될까요?</b>평가액과 공제 순서에 따라 세금이 수백만 원씩 달라집니다. 대표 세무사가 직접 확인해 드립니다.</p>
+          <a class="btn btn-gold" data-link="kakao" href="#" target="_blank" rel="noopener">내 상황으로 정확히 검토받기 → 카카오톡 상담</a>
+        </div>
+        <p class="disclaimer">이 계산 결과는 입력하신 정보만으로 계산한 참고용 추정치이며, 실제 세액은 사실관계에 따라 달라질 수 있습니다. 신고·거래 전에는 반드시 세무 전문가와 확인하세요.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="howto">
+  <div class="wrap">
+    <div class="head"><span class="tag">계산 방법</span><h2 class="h2">증여세는 이렇게 계산합니다</h2></div>
+    <ol>
+      <li><b>증여세 과세가액</b>이번 증여재산 + 10년 안에 같은 분(부모라면 부부 합산)에게 받은 증여</li>
+      <li><b>증여재산공제</b>배우자 6억 · 직계존속 5천만(미성년 2천만) · 직계비속 5천만 · 기타 친족 1천만, 10년 합산 한도</li>
+      <li><b>혼인·출산 공제</b>부모 등에게 받은 경우 별도로 평생 1억원까지</li>
+      <li><b>과세표준 × 세율</b>10%~50% 누진세율. 과세표준 50만원 미만이면 세금 없음</li>
+      <li><b>세대생략 할증</b>손자녀 증여는 30% 할증(미성년 20억 초과 40%)</li>
+      <li><b>신고세액공제</b>기한 안에 신고하면 3% 공제</li>
+    </ol>
+    <table class="rate-table">
+      <thead><tr><th>과세표준</th><th>세율</th><th>누진공제</th></tr></thead>
+      <tbody>
+        <tr><td>1억원 이하</td><td>10%</td><td>—</td></tr>
+        <tr><td>5억원 이하</td><td>20%</td><td>1,000만원</td></tr>
+        <tr><td>10억원 이하</td><td>30%</td><td>6,000만원</td></tr>
+        <tr><td>30억원 이하</td><td>40%</td><td>1억 6,000만원</td></tr>
+        <tr><td>30억원 초과</td><td>50%</td><td>4억 6,000만원</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cases">
+  <div class="wrap">
+    <div class="head"><span class="tag">자주 묻는 질문</span><h2 class="h2">증여세 FAQ</h2></div>
+    <div class="faq">
+      <details><summary>자녀에게 세금 없이 증여할 수 있는 금액은 얼마인가요?</summary><p>성인 자녀는 10년 동안 5천만원(미성년 자녀는 2천만원)까지 증여재산공제를 받아 증여세가 없습니다. 이 한도는 아버지·어머니 등 직계존속 전체를 합쳐 적용됩니다.</p></details>
+      <details><summary>혼인·출산 증여재산공제는 무엇인가요?</summary><p>혼인신고일 전후 2년 이내 또는 자녀 출생일·입양일부터 2년 이내에 부모 등 직계존속에게 받은 증여는 기본 공제와 별도로 1억원까지 추가로 공제됩니다. 혼인과 출산을 합쳐 평생 1억원이 한도입니다.</p></details>
+      <details><summary>10년 안에 같은 사람에게 여러 번 받으면 어떻게 되나요?</summary><p>10년 이내 동일인(증여자가 부모라면 그 배우자 포함)에게 받은 증여는 합산해서 세율을 적용하고, 전에 낸 증여세는 기납부세액으로 빼 줍니다.</p></details>
+      <details><summary>할아버지가 손자에게 바로 증여하면 세금이 더 나오나요?</summary><p>세대를 건너뛴 증여는 산출세액의 30%(미성년자가 20억원 넘게 받으면 40%)가 할증됩니다. 다만 자녀가 이미 사망해 손자녀가 받는 경우에는 할증하지 않습니다.</p></details>
+      <details><summary>증여세 신고기한은 언제인가요?</summary><p>증여받은 날이 속하는 달의 말일부터 3개월 이내에 신고해야 합니다. 기한 안에 신고하면 세액의 3%를 신고세액공제로 빼 줍니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <div class="head"><span class="tag">함께 보기</span><h2 class="h2">관련 칼럼 · 다른 계산기</h2></div>
+    <div class="posts">
+      <a href="/calculator/capital-gains/">양도소득세 계산기</a>
+      <a href="/jeungyeo/">증여세 전문 상담 안내</a>
+    </div>
+    <p class="empty-post" style="margin-top:12px">블로그 소개 칼럼이 올라오면 이 자리에 링크합니다.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><b>세무회계 센츄리</b>경기도 파주시 경의로 1246, 11층 슈가맨워크 3호 (와동동, 유은타워 8차)<br>사업자등록번호 444-04-02958<br>© 세무회계 센츄리. All rights reserved.</div>
+    <nav class="foot-links" aria-label="바로가기">
+      <a href="/yangdo/">양도세</a><a href="/jeungyeo/">증여세</a><a href="/sangsok/">상속세</a><a href="/calculator/gift-tax/">세금계산기</a>
+      <a data-link="blog" href="#" target="_blank" rel="noopener">블로그</a><a data-link="kakao" href="#" target="_blank" rel="noopener">카카오톡</a>
+    </nav>
+  </div>
+</footer>
+<nav class="mbar" aria-label="빠른 상담">
+  <a class="k" data-link="kakao" href="#" target="_blank" rel="noopener">카톡 상담</a>
+  <a class="r" href="/#reserve">전화 예약</a>
+  <a class="b" data-link="blog" href="#" target="_blank" rel="noopener">블로그</a>
+</nav>
+
+<script src="/calculator/tax-config.js?v=20261111"></script>
+<script src="/calculator/tax-calc.js?v=20261111"></script>
+<script src="/calculator/calc-ui.js?v=20261111"></script>
+<script>
+(function () {
+  var f = document.getElementById('f'), done = false;
+  CalcUI.bindMoney(f);
+  function val(n) { var el = f.querySelector('[name=' + n + ']:checked'); return el ? el.value : ''; }
+  function sync() {
+    var asc = val('relation') === 'ascendant';
+    f.querySelectorAll('[data-asc]').forEach(function (el) { CalcUI.show(el, asc); });
+    CalcUI.show(document.getElementById('priorBox'), val('hasPrior') === '1');
+    CalcUI.show(document.getElementById('marriageBox'), asc && val('marriage') === '1');
+    document.getElementById('priorScope').hidden = !asc;
+  }
+  function run() {
+    var asc = val('relation') === 'ascendant', prior = val('hasPrior') === '1';
+    var r = TaxCalc.giftTax({
+      relation: val('relation'), minor: asc && val('minor') === '1',
+      amount: CalcUI.num(f.amount),
+      priorAmount: prior ? CalcUI.num(f.priorAmount) : 0,
+      priorTax: prior ? CalcUI.num(f.priorTax) : 0,
+      priorDeduction: prior ? CalcUI.num(f.priorDeduction) : 0,
+      marriage: asc && val('marriage') === '1', marriageUsed: CalcUI.num(f.marriageUsed),
+      skipGen: asc && val('skipGen') === '1', onTime: val('onTime') === '1'
+    }, TAX_CONFIG);
+    document.getElementById('total').textContent = CalcUI.won(r.tax);
+    document.getElementById('totalKr').textContent = r.tax ? '약 ' + CalcUI.korean(r.tax) : '';
+    var badge = r.tax === 0 ? '<p style="padding:16px 28px 0"><span class="r-badge">' + (r.below ? '과세표준 50만원 미만 — 낼 세금이 없습니다' : '공제 범위 안 — 낼 세금이 없습니다') + '</span></p>' : '';
+    document.getElementById('rBody').innerHTML = badge + '<table class="r-table">' + CalcUI.rowsHtml(r.rows) +
+      '<tr class="final"><td>납부할 증여세</td><td>' + CalcUI.won(r.tax) + '</td></tr></table>';
+    document.getElementById('rMore').hidden = false;
+  }
+  f.addEventListener('change', function () { sync(); if (done) run(); });
+  f.addEventListener('input', function () { if (done) run(); });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault(); done = true; run();
+    if (window.innerWidth <= 960) document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
