@@ -33,7 +33,13 @@
       skipGenRate: 30,                 // 제57조① 세대생략 할증
       skipGenRateMinorLarge: 40,       //   미성년 + 증여재산가액 20억 초과
       skipGenLargeAmount: 20 * 억,
-      filingCreditRate: 3              // 제69조② 신고세액공제
+      filingCreditRate: 3,             // 제69조② 신고세액공제
+      // 기한 후 신고 가산세 안내 — 국세기본법 제47조의2①, 제47조의4①, 제48조②2호, 같은 법 시행령 제27조의4①
+      penalty: {
+        noFiling: 20, noFilingFraud: 40,                  // 무신고가산세(%)
+        lateReduction: [[1, 50], [3, 30], [6, 20]],       // 기한 후 신고 감면 [개월 이내, 감면율%]
+        latePerDay: 22 / 100000                           // 납부지연가산세 1일 10만분의 22
+      }
     },
 
     cgt: {

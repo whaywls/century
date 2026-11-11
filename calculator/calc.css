@@ -27,6 +27,17 @@
 .check.disabled{opacity:.5;cursor:not-allowed;background:var(--ivory-2)}
 .lock{font-size:14px;font-weight:700;color:var(--bx-3);background:#FDECEA;border-radius:4px;padding:10px 14px}
 .r-badge.warn{background:#FDECEA;color:var(--bx-2)}
+.penalty-box{background:#FDECEA;border:1px solid #E9B9B3;border-left:4px solid var(--bx-2);border-radius:4px;padding:16px 18px;font-size:15px;color:var(--ink-2)}
+.penalty-box > b{display:block;color:var(--bx-2);font-size:16px;margin-bottom:6px}
+.penalty-box ul{margin:0 0 8px;padding-left:18px;line-height:1.7}
+.penalty-box li{margin-bottom:6px}
+.penalty-box li b{color:var(--ink)}
+.penalty-box small{display:block;font-size:13px;color:var(--ink-3)}
+.r-penalty{background:#fff;border:1px solid #E9B9B3;border-left:4px solid var(--bx-2);padding:18px 22px;font-size:14px;color:var(--ink-2)}
+.r-penalty b.t{display:block;font-size:16px;color:var(--bx-2);margin-bottom:6px}
+.r-penalty table{width:100%;border-collapse:collapse}
+.r-penalty td{padding:6px 0;border-bottom:1px dashed var(--line)}
+.r-penalty td:last-child{text-align:right;font-weight:700;white-space:nowrap}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .calc-form .btn{width:100%}
 

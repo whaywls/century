@@ -21,7 +21,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;family=Noto+Serif+KR:wght@500;700;900&amp;display=swap">
 <link rel="stylesheet" href="/css/site.css?v=20261023">
-<link rel="stylesheet" href="/calculator/calc.css?v=20261111">
+<link rel="stylesheet" href="/calculator/calc.css?v=20261111b">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
  {"@type":"Question","name":"자녀에게 세금 없이 증여할 수 있는 금액은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"성인 자녀는 10년 동안 5천만원(미성년 자녀는 2천만원)까지 증여재산공제를 받아 증여세가 없습니다. 이 한도는 아버지·어머니 등 직계존속 전체를 합쳐 적용됩니다."}},
@@ -142,6 +142,17 @@
         </div>
         <p class="hint">증여일이 속한 달의 말일부터 3개월 이내</p>
       </fieldset>
+      <div class="penalty-box" id="penaltyBox" hidden>
+        <b>신고기한이 지나면 가산세가 붙습니다</b>
+        <ul>
+          <li><b>무신고가산세</b> — 납부할 세액의 <b>20%</b> (거짓·은닉 등 부정행위면 40%)
+            <small>기한 후 신고로 감면: 기한 경과 1개월 이내 50% · 3개월 이내 30% · 6개월 이내 20% 감면</small></li>
+          <li><b>납부지연가산세</b> — 내지 않은 세액 × 경과일수 × <b>1일 0.022%</b> (1년이면 약 8%)
+            <small>납부기한 다음 날부터 실제 낸 날까지 매일 붙습니다. 세무서 고지 후에도 안 내면 3% 등이 더해집니다.</small></li>
+          <li><b>신고세액공제 3%</b>를 받을 수 없습니다.</li>
+        </ul>
+        <p class="hint">근거: 국세기본법 제47조의2, 제47조의4, 제48조 제2항, 같은 법 시행령 제27조의4</p>
+      </div>
 
       <button class="btn btn-bx" type="submit">증여세 계산하기</button>
     </form>
@@ -151,6 +162,7 @@
         <div class="r-head"><small>납부할 증여세</small><strong id="total">—</strong><span class="kr" id="totalKr"></span></div>
         <div id="rBody"><p class="r-empty">왼쪽에 금액을 넣고 <b>계산하기</b>를 누르면<br>계산 과정이 단계별로 나옵니다.</p></div>
       </div>
+      <div class="r-penalty" id="rPenalty" hidden></div>
       <div id="rMore" hidden>
         <div class="r-diff">
           <b>이런 경우는 결과가 달라집니다</b>
@@ -236,9 +248,9 @@
   <a class="b" data-link="blog" href="#" target="_blank" rel="noopener">블로그</a>
 </nav>
 
-<script src="/calculator/tax-config.js?v=20261111"></script>
-<script src="/calculator/tax-calc.js?v=20261111"></script>
-<script src="/calculator/calc-ui.js?v=20261111"></script>
+<script src="/calculator/tax-config.js?v=20261111b"></script>
+<script src="/calculator/tax-calc.js?v=20261111b"></script>
+<script src="/calculator/calc-ui.js?v=20261111b"></script>
 <script>
 (function () {
   var f = document.getElementById('f'), done = false;
@@ -250,6 +262,19 @@
     CalcUI.show(document.getElementById('priorBox'), val('hasPrior') === '1');
     CalcUI.show(document.getElementById('marriageBox'), asc && val('marriage') === '1');
     document.getElementById('priorScope').hidden = !asc;
+    document.getElementById('penaltyBox').hidden = val('onTime') !== '0';
+  }
+  // 기한 후 신고 시 가산세 추정 (증여세에 더해 내는 금액)
+  function penaltyHtml(tax) {
+    var p = TAX_CONFIG.gift.penalty, base = Math.floor(tax * p.noFiling / 100), day = Math.floor(tax * p.latePerDay);
+    var rows = '<tr><td>무신고가산세 (감면 전 ' + p.noFiling + '%)</td><td>' + CalcUI.won(base) + '</td></tr>' +
+      p.lateReduction.map(function (x) {
+        return '<tr><td>· 기한 경과 ' + x[0] + '개월 이내 신고 (' + x[1] + '% 감면)</td><td>' + CalcUI.won(base - Math.floor(base * x[1] / 100)) + '</td></tr>';
+      }).join('') +
+      '<tr><td>납부지연가산세 (하루 0.022%)</td><td>하루 ' + CalcUI.won(day) + '</td></tr>' +
+      '<tr><td>· 30일 늦으면</td><td>' + CalcUI.won(day * 30) + '</td></tr>';
+    return '<b class="t">기한 후 신고하면 가산세가 더 붙습니다 (추정)</b><table>' + rows + '</table>' +
+      '<p class="hint" style="margin-top:8px">위 증여세에 더해 내는 금액입니다. 부정행위면 무신고가산세 40%, 세무서 고지 후에도 안 내면 3% 등이 더해집니다.</p>';
   }
   function run() {
     var asc = val('relation') === 'ascendant', prior = val('hasPrior') === '1';
@@ -267,6 +292,8 @@
     var badge = r.tax === 0 ? '<p style="padding:16px 28px 0"><span class="r-badge">' + (r.below ? '과세표준 50만원 미만 — 낼 세금이 없습니다' : '공제 범위 안 — 낼 세금이 없습니다') + '</span></p>' : '';
     document.getElementById('rBody').innerHTML = badge + '<table class="r-table">' + CalcUI.rowsHtml(r.rows) +
       '<tr class="final"><td>납부할 증여세</td><td>' + CalcUI.won(r.tax) + '</td></tr></table>';
+    var late = val('onTime') === '0' && r.tax > 0, rp = document.getElementById('rPenalty');
+    rp.hidden = !late; rp.innerHTML = late ? penaltyHtml(r.tax) : '';
     document.getElementById('rMore').hidden = false;
   }
   f.addEventListener('change', function () { sync(); if (done) run(); });

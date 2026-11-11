@@ -22,11 +22,13 @@
   }
   function parseDate(s) { var p = String(s).split('-'); return { y: +p[0], m: +p[1], d: +p[2] }; }
   /*
-   * 만 년수: 취득일의 n년 뒤 같은 날(응당일)이 양도일 이전이거나 같으면 n년으로 센다.
-   * 예) 2024-03-01 취득 → 2026-03-01 양도 = 2년.  (초일 불산입 처리 — 조 세무사 최종 확인 사항)
+   * 만 년수 — 보유기간은 취득일(초일)을 산입한다(소득법 §95④, 서면5팀-1493 2007.5.9., 재산46014-205 2002.12.18.).
+   * 그래서 양도일 다음 날까지를 응당일과 비교한다.
+   * 예) 2024-03-01 취득 → 2026-02-28 양도 = 2년 (2026-02-27 양도 = 1년)
    */
   function fullYears(from, to) {
-    var a = parseDate(from), b = parseDate(to);
+    var a = parseDate(from), t = new Date(Date.UTC(+to.slice(0, 4), +to.slice(5, 7) - 1, +to.slice(8, 10) + 1));
+    var b = { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() };
     var n = b.y - a.y;
     if (b.m < a.m || (b.m === a.m && b.d < a.d)) n--;
     return Math.max(0, n);
